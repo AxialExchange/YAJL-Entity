@@ -45,7 +45,8 @@
                     className = [className substringWithRange:NSMakeRange(3, [className length] - 4)];
                     Class klass = NSClassFromString(className);
                     
-                    [self performSelector:setter withObject:[klass objectWithPropertyDictionary:value]];
+//                    [self performSelector:setter withObject:[klass objectWithPropertyDictionary:value]];
+                    ((void (*)(id, SEL, id))[self methodForSelector:setter])(self, setter, [klass objectWithPropertyDictionary:value]);
                 }
             } else {
                 if (value == [NSNull null]) value = nil;
@@ -61,7 +62,7 @@
 
 + (id)objectWithPropertyDictionary:(NSDictionary *)dict
 {
-    id ret = [[[self alloc] init] autorelease];
+    id ret = [[self alloc] init];// autorelease];
     [ret fillPropertiesWithDictionary:dict];
     
     return ret;
