@@ -20,6 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-#import "NSObject+YAJLizable.h"
-#import "NSData+YAJLtoObject.h"
-#import "NSObject+FillPropertiesWithDictionary.h"
+#import "YAJLEntity_NSObject+YAJLizable.h"
+#import "YAJLEntity_NSData+YAJLtoObject.h"
+#import "YAJLEntity_NSObject+FillPropertiesWithDictionary.h"

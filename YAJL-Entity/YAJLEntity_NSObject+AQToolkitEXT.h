@@ -21,7 +21,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "NSObject+Properties.h"
+#import "YAJLEntity_NSObject+Properties.h"
 
 
 @interface NSObject(AQToolkitEXT)

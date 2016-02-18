@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-#import "NSData+YAJLtoObject.h"
-#import "YAJLObjectParser.h"
+#import "YAJLEntity_NSData+YAJLtoObject.h"
+#import "YAJLEntity_YAJLObjectParser.h"
 
 
 @implementation NSData(YAJLtoObject)

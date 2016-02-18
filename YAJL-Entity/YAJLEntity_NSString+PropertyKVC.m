@@ -36,7 +36,7 @@
  *
  */
 
-#import "NSString+PropertyKVC.h"
+#import "YAJLEntity_NSString+PropertyKVC.h"
 
 @implementation NSString (AQPropertyKVC)
 

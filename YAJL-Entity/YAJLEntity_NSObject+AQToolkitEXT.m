@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-#import "NSObject+AQToolkitEXT.h"
+#import "YAJLEntity_NSObject+AQToolkitEXT.h"
 
 
 @implementation NSObject(AQToolkitEXT)

@@ -20,9 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-#import "NSObject+YAJLizable.h"
-#import "NSObject+Properties.h"
-#import "NSString+CaseExt.h"
+#import "YAJLEntity_NSObject+YAJLizable.h"
+#import "YAJLEntity_NSObject+Properties.h"
+#import "YAJLEntity_NSString+CaseExt.h"
 
 int EWPropNameUpperCaseFirstChar = 0;
 

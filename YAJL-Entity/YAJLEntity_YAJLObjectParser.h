@@ -21,9 +21,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "NSObject+Properties.h"
+#import "YAJLEntity_NSObject+Properties.h"
 #import "YAJL.h"
-#import "NSObject+YAJLizable.h"
+#import "YAJLEntity_NSObject+YAJLizable.h"
 
 @interface YAJLObjectParser : NSObject <YAJLParserDelegate> {
 	Class klass_;

@@ -37,8 +37,8 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "NSObject+Properties.h"
-#import "NSString+PropertyKVC.h"
+#import "YAJLEntity_NSObject+Properties.h"
+#import "YAJLEntity_NSString+PropertyKVC.h"
 
 @implementation NSObject (AQProperties)
 

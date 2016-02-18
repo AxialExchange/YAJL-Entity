@@ -20,7 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-#import "NSString+CaseExt.h"
+#import "YAJLEntity_NSString+CaseExt.h"
 
 
 @implementation NSString(CaseExt)

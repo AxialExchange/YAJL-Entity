@@ -20,9 +20,9 @@
  * IN THE SOFTWARE.
  */
 
-#import "NSObject+FillPropertiesWithDictionary.h"
-#import "NSObject+AQToolkitEXT.h"
-#import "NSString+CaseExt.h"
+#import "YAJLEntity_NSObject+FillPropertiesWithDictionary.h"
+#import "YAJLEntity_NSObject+AQToolkitEXT.h"
+#import "YAJLEntity_NSString+CaseExt.h"
 
 
 @implementation NSObject(FillPropertiesWithDictionary)

@@ -21,9 +21,9 @@
  */
 
 #import <Foundation/NSKeyValueCoding.h>
-#import "YAJLObjectParser.h"
-#import "NSString+CaseExt.h"
-#import "NSObject+AQToolkitEXT.h"
+#import "YAJLEntity_YAJLObjectParser.h"
+#import "YAJLEntity_NSString+CaseExt.h"
+#import "YAJLEntity_NSObject+AQToolkitEXT.h"
 
 @implementation NSObject (EWIsClassObject)
 
