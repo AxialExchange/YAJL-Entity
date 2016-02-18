@@ -107,7 +107,7 @@
 - (id)initWithStubObject:(id)obj parser:(YAJLParser *)parser
 {
     if ((self = [self initWithClass:nil parser:parser])) {
-        stub_ = obj;//[obj retain];
+        stub_ = [obj retain];
     }
     
     return self;
@@ -130,10 +130,10 @@
 	if (!root_) {
         if (klass_) {
             dict = [[klass_ alloc] initForYAJL];
-            root_ = dict;//[dict retain];
+            root_ = [dict retain];
         } else {
-            root_ = stub_;//[stub_ retain];
-            dict = root_;//[root_ retain];
+            root_ = [stub_ retain];
+            dict = [root_ retain];
         }
 	} else {
 		// Check whether this dictionary is in an array or another dictionary
@@ -171,18 +171,18 @@
     
 	dict_ = dict;
 	currentType_ = YAJLDecoderCurrentTypeDict;  
-//	[dict release];
+	[dict release];
 }
 
 - (void)parserDidEndDictionary:(YAJLParser *)parser
 {
-    id value = [stack_ objectAtIndex:[stack_ count]-1];// retain];
+	id value = [[stack_ objectAtIndex:[stack_ count]-1] retain];
     [self cleanAndPopLastClassObject_];
 	[self pop_];
 	[self parser:parser didAdd:value];
     
 	
-//	[value release];
+	[value release];
 }
 
 - (void)parserDidStartArray:(YAJLParser *)parser
@@ -190,7 +190,7 @@
 	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:YAJLDocumentStackCapacity];
 	
 	if (!root_) {
-        root_ = array;// [array retain];
+		root_ = [array retain];
         
         arrayType_ = klass_;
 	} else {
@@ -207,17 +207,17 @@
     [stack_ addObject:array]; // Push
 	array_ = array;
 	currentType_ = YAJLDecoderCurrentTypeArray;
-	//[array release];
+	[array release];
 }
 
 - (void)parserDidEndArray:(YAJLParser *)parser
 {
-    id value = [stack_ lastObject];// retain];
+	id value = [[stack_ lastObject] retain];
 	
 	if ([arrayTypeStack_ count] > 0) [arrayTypeStack_ removeLastObject];
     
     if (arrayType_ == nil && [value count] == 0) {
-//        [value release];
+        [value release];
         value = nil;
     }
 	
@@ -229,7 +229,7 @@
 	
 	[self pop_];  
 	[self parser:parser didAdd:value];
-//	[value release];
+	[value release];
 }
 
 - (void)parser:(YAJLParser *)parser didMapKey:(NSString *)key
@@ -358,14 +358,14 @@
 
 #pragma mark -
 #pragma mark Memory Management
-//- (void)dealloc
-//{
-//	[stack_ release];
-//	[keyStack_ release];
-//	[arrayTypeStack_ release];
-//    [classObjectSweeperStack_ release];
-//	[root_ release];
-//    [stub_ release];
-//	[super dealloc];
-//}
+- (void)dealloc
+{
+	[stack_ release];
+	[keyStack_ release];
+	[arrayTypeStack_ release];
+    [classObjectSweeperStack_ release];
+	[root_ release];
+    [stub_ release];
+	[super dealloc];
+}
 @end

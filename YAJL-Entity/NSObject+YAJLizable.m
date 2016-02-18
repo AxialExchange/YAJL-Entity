@@ -45,21 +45,21 @@ int EWPropNameUpperCaseFirstChar = 0;
         if ([superClass superclass] != nil) {
             NSMutableDictionary *superDict = [self newDictionaryOfPropertiesWithPredicate:predicate asClass:superClass option:option];
             [dict addEntriesFromDictionary:superDict];
-//            [superDict release];
+            [superDict release];
         } else {
             break;
         }
     }
     
     NSDictionary *ret = [[NSDictionary alloc] initWithDictionary:dict];
-//    [dict release];
+    [dict release];
     
     return ret;
 }
 
 - (NSDictionary *)dictionaryOfPropertiesWithPredicate:(NSPredicate *)predicate option:(EWPropDictOption)option
 {
-    return [self newDictionaryOfPropertiesWithPredicate:predicate option:option];// autorelease];
+    return [[self newDictionaryOfPropertiesWithPredicate:predicate option:option] autorelease];
 }
 
 - (NSDictionary *)newDictionaryOfPropertiesWithOption:(EWPropDictOption)option
@@ -69,7 +69,7 @@ int EWPropNameUpperCaseFirstChar = 0;
 
 - (NSDictionary *)dictionaryOfPropertiesWithOption:(EWPropDictOption)option
 {
-    return [self newDictionaryOfPropertiesWithOption:option];// autorelease];
+    return [[self newDictionaryOfPropertiesWithOption:option] autorelease];
 }
 
 - (NSDictionary *)newDictionaryOfProperties
@@ -79,7 +79,7 @@ int EWPropNameUpperCaseFirstChar = 0;
 
 - (NSDictionary *)dictionaryOfProperties
 {
-    return [self newDictionaryOfProperties];// autorelease];
+	return [[self newDictionaryOfProperties] autorelease];
 }
 
 - (id)initForYAJL

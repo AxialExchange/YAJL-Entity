@@ -37,7 +37,7 @@
 
 - (NSString *)camelcaseString
 {
-    NSMutableArray *components = [[self componentsSeparatedByString:@"_"] mutableCopy];// autorelease];
+    NSMutableArray *components = [[[self componentsSeparatedByString:@"_"] mutableCopy] autorelease];
     if ([components count] > 1) {
         for (int i = 1, c = [components count]; i < c; i++) {
             NSString *str = [components objectAtIndex:i];

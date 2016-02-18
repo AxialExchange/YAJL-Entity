@@ -29,28 +29,23 @@
 
 - (id)newObjectFromJSONOfType:(Class)klass withOptions:(YAJLParserOptions)option
 {
-#define AntiARCRetain(...) void *retainedThing = (__bridge_retained void *)__VA_ARGS__; retainedThing = retainedThing
-
-//	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    id ret;
-    @autoreleasepool {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	YAJLParser *parser = [[YAJLParser alloc] initWithParserOptions: option];
 	YAJLObjectParser *objParser = [[YAJLObjectParser alloc] initWithClass:klass parser:parser];
 	[parser parse:self];
     [objParser cleanClassObjects];
-        ret = objParser.root; //[objParser.root retain];
-        AntiARCRetain(ret);
+	id ret = [objParser.root retain];
+	
 	parser.delegate = nil;
-//	[objParser release];
-//	[parser release];
-//	[pool drain];
-    }
+	[objParser release];
+	[parser release];
+	[pool drain];
 	return ret;
 }
 
 - (id)objectFromJSONOfType:(Class)klass withOptions:(YAJLParserOptions)option
 {
-    return [self newObjectFromJSONOfType:klass withOptions:option];// autorelease];
+	return [[self newObjectFromJSONOfType:klass withOptions:option] autorelease];
 }
 
 - (id)newObjectFromJSONOfType:(Class)klass
@@ -65,19 +60,16 @@
 
 - (void)fillObject:(id)obj withOptions:(YAJLParserOptions)option
 {
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    @autoreleasepool {
-
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	YAJLParser *parser = [[YAJLParser alloc] initWithParserOptions: option];
 	YAJLObjectParser *objParser = [[YAJLObjectParser alloc] initWithStubObject:obj parser:parser];
 	[parser parse:self];
     [objParser cleanClassObjects];
 	
 	parser.delegate = nil;
-//	[objParser release];
-//	[parser release];
-//	[pool drain];
-    }
+	[objParser release];
+	[parser release];
+	[pool drain];
 }
 
 - (void)fillObject:(id)obj

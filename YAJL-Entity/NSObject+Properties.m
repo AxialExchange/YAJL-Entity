@@ -165,7 +165,7 @@
     
     free( properties );   // Fixed by Eli Wang
 	
-	return ( [list copy]/* autorelease]*/ );
+	return ( [[list copy] autorelease] );
 }
 
 - (BOOL) hasProperties
